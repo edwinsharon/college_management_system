@@ -1,0 +1,192 @@
+.title{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 200px;
+    margin-top: 0;
+    color: white;
+  }
+  .button1{
+  background-color: rgb(24, 119, 242);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  height: 20px;
+  border-radius: 8%;
+  
+  }
+.main{
+    background-image: url(../images/mainbackground.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  
+.submain1 h4{
+  color: white;
+  background-color: cornflowerblue;
+  height: 200px;
+  width: 250px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px 15px;
+  border-radius: 8%;
+  
+}
+.submain1{
+  font-family: "Bebas Neue", sans-serif;
+  
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+}
+.submain12{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+.credits{
+  display: flex;
+  flex-wrap: wrap;
+  color: rgb(24, 119, 242);
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  border-bottom: 5px solid rgb(24, 119, 242);
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.credit1{
+  object-fit:fill ;
+}
+.credit1 img{
+  height: 250px;
+  width: 300px;
+  object-fit:fill ;
+}
+.placementtitle
+{
+  height: 150px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  margin-left: 65px;
+  margin-bottom: 68px;
+}
+.abouttesla{
+ width: 70%;
+ margin: 0% 15%;
+ color: rgb(24, 119, 242);
+ font-weight: 700;
+}
+.abouttesla h1{
+  margin-left: 45%;
+  
+}
+.footer{
+  background-color:rgb(24, 119, 242);
+  color: white;
+  width: 100%;
+  height: 250px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 5%;
+
+}
+.footer2{
+  margin-top: 50px;
+}
+ul{
+  color: white;
+}
+li:hover{
+  color: darkblue;
+}
+@media only screen and (min-width: 1400px){
+
+}
+@media only screen and (max-width: 1399.8px) and (min-width:1200px){
+
+}
+@media only screen and (max-width: 1199.8px) and (min-width:992px){
+
+}
+@media only screen and (max-width: 991.8px) and (min-width:768px) {
+
+}
+@media only screen and (max-width: 767.8px) and (min-width: 576px){
+
+}
+
+@media only screen and (max-width: 575.8px){
+  .title{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 200px;
+    margin-top: 0;
+    color: white;
+  }
+.main{
+    background-image: url(../images/mainbackground.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  
+.submain1 h4{
+  color: white;
+  background-color: cornflowerblue;
+  height: 30px;
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0%;
+  
+}
+.submain1{
+  font-family: "Bebas Neue", sans-serif;
+  margin-left:40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+}
+.submain12{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+.abouttesla h1{
+  margin-left: 25%;
+ 
+}
+}
+
+
+
