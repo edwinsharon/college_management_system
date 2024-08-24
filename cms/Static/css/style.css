@@ -146,8 +146,9 @@ li:hover{
     font-family: "Bebas Neue", sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 200px;
+    font-size: 150px;
     margin-top: 0;
+    padding-top: 10%;
     color: white;
   }
 .main{
@@ -185,12 +186,27 @@ li:hover{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 20%;
 
 }
 .abouttesla h1{
   margin-left: 25%;
  
 }
+.button1{
+  background-color: rgb(24, 119, 242);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  height: 15px;
+  border-radius: 8%;
+ 
+  
+  }
 }
 
 
