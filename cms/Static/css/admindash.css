@@ -1,0 +1,39 @@
+.mainnav{
+    background-color: rgb(24, 119, 242);
+    position: fixed;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border-radius: 5px;
+    margin: 0px;
+}
+.dashmenu{
+    background-color: rgb(24, 119, 242);
+    color: white;
+    width: 250px;
+    height: 80vh;
+    position: fixed;
+    margin-top: 160px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+}
+.dash{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.dashmenu a{
+    text-decoration: none;
+    color: white;
+}
+.dashmenu h1{
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding: 5px;
+}
