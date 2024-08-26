@@ -27,6 +27,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .dashmenu a{
     text-decoration: none;
@@ -36,4 +37,99 @@
     background-color: cornflowerblue;
     border-radius: 5px;
     padding: 5px;
+}
+.card{
+    height: 200px;
+    width: 350px;
+    background-color:whitesmoke;
+    margin-left: 70px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+}
+.dashwork{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+.dashmenu1{
+    background-color: rgb(24, 119, 242);
+    color: white;
+    width: 80px;
+    height: 80vh;
+    position: fixed;
+    margin-top: 160px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+    display: none;
+}
+@media only screen and (min-width: 1400px){
+
+}
+@media only screen and (max-width: 1399.8px) and (min-width:1200px){
+
+}
+@media only screen and (max-width: 1199.8px) and (min-width:992px){
+
+}
+@media only screen and (max-width: 991.8px) and (min-width:768px) {
+
+}
+@media only screen and (max-width: 767.8px) and (min-width: 576px){
+
+}
+
+@media only screen and (max-width: 575.8px){
+    .dashmenu{
+        background-color: rgb(24, 119, 242);
+        color: white;
+        width: 50px;
+        height: 80vh;
+        position: fixed;
+        margin-top: 160px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items:center ;
+        justify-content: center;
+        display: none;
+    }
+    .dashmenu1{
+        background-color: rgb(24, 119, 242);
+        color: white;
+        width: 80px;
+        height: 80vh;
+        position: fixed;
+        margin-top: 160px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items:center ;
+        justify-content: center;
+        
+    }
+    .dashmenu1 a{
+        text-decoration: none;
+        color: white;
+    }
+    .major{
+        background-color: cornflowerblue;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .dashmenu1 span{
+        margin-top: 20px;
+    }
+    .dashmenu1 a{
+        text-decoration: none;
+        color: white;
+    }
 }

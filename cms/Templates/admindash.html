@@ -1,12 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/admindash.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
     <div class="main">
         <div class="mainnav">
@@ -14,11 +17,20 @@
         </div>
         <div class="dash">
             <div class="dashmenu">
-              <h1><a href="">Teachers</a></h1> 
+                <h1><a href="">Teachers</a></h1>
                 <h4><a href="">Students</a></h4>
                 <h4><a href="">Add Teachers</a></h4>
             </div>
+            <div class="dashmenu1">
+                <span class="major"><a href="">Teacher</a></span>
+                <span><a href="">Students</a></span>
+                <span style="margin-left: 10px;"><a href="">Add Teachers</a></span>
+            </div>
             <div class="dashwork">
+                <div class="card">
+                    <div class="profname"></div>
+                    
+                </div>
 
 
             </div>
@@ -26,4 +38,5 @@
         </div>
     </div>
 </body>
+
 </html>

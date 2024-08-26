@@ -26,6 +26,7 @@ class Assignment(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     due_date = models.DateField()
+    is_submitted = models.BooleanField(default=False) 
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
