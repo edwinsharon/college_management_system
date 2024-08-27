@@ -9,4 +9,8 @@ urlpatterns = [
     path('admindash',views.admindash,name="admindash"),
     path('admindashstudents',views.admindashstudents,name="admindashstudents"),
     path('addstaff',views.addstaff,name="addstaff"),
+    path('loginuser',views.loginuser,name="loginuser"),
 ]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

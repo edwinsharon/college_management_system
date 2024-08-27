@@ -13,12 +13,7 @@ from django.urls import reverse
 # Create your views here.
 def index(request):
     return render(request,'index.html')
-def stafflogin(request):
-    if 'username' in request.session:
-        if is_staff:
-            return redirect('staffdash')
-        else:
-            return redirect('index')
+def loginuser(request):
     if request.POST:
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -26,22 +21,29 @@ def stafflogin(request):
         if user is not None:
             login(request,user)
             request.session['username']=username
-            return redirect("sellerindex")
-    return render(request,"sellerlogin.html") 
+            if is_staff:
+                return redirect('staffdash')
+            elif is_super:
+                return redirect('admindash')
+            else:
+                return redirect('studentdash')
+    return render(request,"adminsignin.html") 
 
 def adminsignin(request):
-     if request.method == 'POST':
+    if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
-            if user.is_super:
-                login(request, user)
-                request.session['username'] = username
-                return redirect('admindash') 
-            else :
-                return redirect("index")
-        return render(request,"adminsignin.html")        
+            login(request,user)
+            request.session['username']=username
+            if is_staff:
+                return redirect('staffdash')
+            elif is_super:
+                return redirect('admindash')
+            else:
+                return redirect('studentdash')
+    return render(request,"adminsignin.html")        
 
 def admindash(request):
     return render(request,"admindash.html")   
@@ -51,12 +53,11 @@ def addstaff(request):
     if request.POST:
         email=request.POST.get('email')
         username=request.POST.get('username')
-        
-        if not username or not email or not password or not confirmpassword:
+        first_name=request.POST.get('firstname')
+        last_name=request.POST.get('lastname')
+        if not username or not email:
             messages.error(request,'all fields are required.')
-
-        elif confirmpassword != password:
-            messages.error(request,"password doesnot match")
+      
            
         elif User.objects.filter(email=email).exists():
             messages.error(request,"email already exist")
@@ -65,8 +66,21 @@ def addstaff(request):
             messages.error(request,"username already exist")
 
         else:
-           
+            password = get_random_string(length=12)
+            message = f'Your Password for Teslas System is: {password}. your username is :{username}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = email
+            send_mail('Email Verification', message, email_from, recipient_list)
             user = User.objects.create_user(username=username, email=email, password=password)    
             user.is_staff=True
             user.save()
+            messages.success(request, "Staff member added successfully.")
+            return redirect("admindash")
     return render(request,"addstaff.html")
+
+
+def handle_first_login(sender, request, user, **kwargs):
+    if hasattr(user, 'is_first_login') and user.is_first_login:
+        user.is_first_login = False
+        user.save()
+        return redirect(reverse('first_login_welcome'))

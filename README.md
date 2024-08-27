@@ -46,3 +46,14 @@ college management system
             else :
                 return redirect("index")
         return render(request,"adminsignin.html") 
+
+
+
+
+
+    otp = generate_otp()
+    request.session['otp'] = otp 
+    message = f'Your email verification code is: {otp}'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [request.session.get('email')]
+    send_mail('Email Verification', message, email_from, recipient_list)

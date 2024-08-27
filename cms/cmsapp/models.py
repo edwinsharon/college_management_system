@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Verify(models.Model):
     otp = models.IntegerField()
@@ -40,4 +41,8 @@ class Exam(models.Model):
     mark=models.IntegerField()
     def __str__(self):
         return self.title
+
+class CustomUser(AbstractUser):
+    is_first_login = models.BooleanField(default=True)   
+
     
