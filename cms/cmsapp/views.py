@@ -38,12 +38,35 @@ def adminsignin(request):
             if user.is_super:
                 login(request, user)
                 request.session['username'] = username
-                return redirect('index') 
+                return redirect('admindash') 
             else :
                 return redirect("index")
-        return render(request,"adminsignin.html") 
+        return render(request,"adminsignin.html")        
 
 def admindash(request):
     return render(request,"admindash.html")   
 def admindashstudents(request):
     return render(request,"admindashstudents.html")
+def addstaff(request):
+    if request.POST:
+        email=request.POST.get('email')
+        username=request.POST.get('username')
+        
+        if not username or not email or not password or not confirmpassword:
+            messages.error(request,'all fields are required.')
+
+        elif confirmpassword != password:
+            messages.error(request,"password doesnot match")
+           
+        elif User.objects.filter(email=email).exists():
+            messages.error(request,"email already exist")
+           
+        elif User.objects.filter(username=username).exists():
+            messages.error(request,"username already exist")
+
+        else:
+           
+            user = User.objects.create_user(username=username, email=email, password=password)    
+            user.is_staff=True
+            user.save()
+    return render(request,"addstaff.html")
