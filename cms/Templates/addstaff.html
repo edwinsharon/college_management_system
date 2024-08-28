@@ -27,6 +27,7 @@
             </div>
             <div class="dashwork">
                 <form action="{% url 'addstaff' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
+                    {% csrf_token %}
                     <input type="text" name="firstname" placeholder="firstname" height="30px" style="border: none;">
                     <br>
                     <br>
@@ -34,6 +35,10 @@
                     <br>
                     <br>
                     <input type="text" name="username" placeholder="username" style="border: none;">
+                    <br><br>
+                    <input type="text" name="age" placeholder="age" style="border: none;">
+                    <br><br>
+                    <input type="text" name="department" placeholder="department" style="border: none;">
                     <br><br>
                     <input type="email" name="email" placeholder="email" style="border: none;">
                     <br>

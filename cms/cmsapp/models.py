@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
+
 # Create your models here.
 class Verify(models.Model):
     otp = models.IntegerField()
@@ -9,11 +9,12 @@ class Verify(models.Model):
 
 
 class Profile(models.Model):
-    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age=models.IntegerField()
     department=models.CharField(max_length=50)
+    is_first_login = models.BooleanField(default=True)   
 
 
 class Semester(models.Model):
@@ -42,7 +43,7 @@ class Exam(models.Model):
     def __str__(self):
         return self.title
 
-class CustomUser(AbstractUser):
-    is_first_login = models.BooleanField(default=True)   
+# class CustomUser(AbstractUser):
+#     is_first_login = models.BooleanField(default=True)   
 
     
