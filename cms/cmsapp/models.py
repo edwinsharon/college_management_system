@@ -14,14 +14,15 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30)
     age=models.IntegerField()
     department=models.CharField(max_length=50)
-    is_first_login = models.BooleanField(default=True)   
+    is_first_login = models.BooleanField(default=True) 
+    staff= models.ForeignKey(User, on_delete=models.CASCADE,related_name='profile_staff')  
 
 
 class Semester(models.Model):
     name = models.CharField(max_length=50)
     start_date = models.DateField()
     end_date = models.DateField()
-    staff= models.ForeignKey(User, on_delete=models.CASCADE, related_name='products_sold')
+    staff= models.ForeignKey(User, on_delete=models.CASCADE, related_name='semester_staff')
     def __str__(self):
         return self.name
 

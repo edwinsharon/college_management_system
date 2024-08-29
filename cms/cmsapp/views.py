@@ -125,3 +125,18 @@ def deletestaff(request,pk):
     prodobj=Profile.objects.get(pk=pk)
     prodobj.delete()
     return redirect("admindash")
+
+
+def staff(request,pk):
+
+    students = Profile.objects.filter(staff)
+    return render(request,"staff.html")
+
+# def createadmin(request):
+#     username="mainadmin"
+#     email="edwinmadapallil@gmail.com"
+#     password="tesla@2002"
+#     user = User.objects.create_user(username=username, email=email, password=password) 
+#     user.is_superuser=True
+#     user.save()
+#     return HttpResponse("helloworld")   
