@@ -51,7 +51,7 @@ def admindash(request):
     staff_profiles = Profile.objects.filter(staff=True)
     return render(request,"admindash.html",{"staff_profiles":staff_profiles})   
 def admindashstudents(request):
-    staff_profiles = Profile.objects.all()
+    staff_profiles = Profile.objects.filter(staff=False)
     return render(request,"admindashstudents.html",{"staff_profiles":staff_profiles})
 def addstaff(request):
     if request.POST:

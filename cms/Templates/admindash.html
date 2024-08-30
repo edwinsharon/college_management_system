@@ -24,6 +24,7 @@
           <h1><a href="{% url 'admindash' %}">Teachers</a></h1>
           <h4><a href="{% url  'admindashstudents' %}">Students</a></h4>
           <h4><a href="{% url 'addstaff' %}">Add Teachers</a></h4>
+          <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
         </div>
         <div class="dashmenu1">
           <span class="major"><a href="{% url 'admindash' %}">Teacher</a></span>
@@ -35,9 +36,9 @@
         </div>
         <div class="dashwork">
           {% for i in staff_profiles %}
-          <div class="card" style="margin-left: 180px;">
+          <div class="card">
             <div class="profname">
-              <table style="padding-top: 0; padding-left: 30px;">
+              <table >
                 <tr>
                   <th>FIRST NAME:</th>
                   <th>{{ i.first_name }}</th>

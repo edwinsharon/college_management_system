@@ -19,11 +19,13 @@
                 <h4><a href="{% url 'admindash' %}">Teachers</a></h4>
                 <h4><a href="{% url  'admindashstudents' %}">Students</a></h4>
                 <h1><a href="{% url 'addstaff' %}">Add Teachers</a></h1>
+                <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
             </div>
             <div class="dashmenu1">
                 <span><a href="{% url 'admindash' %}">Teacher</a></span>
                 <span><a href="{% url  'admindashstudents' %}">Students</a></span>
                 <span  class="major"><a href="">Add Teachers</a></span>
+                <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
             </div>
             <div class="dashwork">
                 <form action="{% url 'addstaff' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
