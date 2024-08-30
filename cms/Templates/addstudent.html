@@ -19,25 +19,30 @@
       </div>
       <div class="dash">
         <div class="dashmenu">
-          <h1><a href="">Students</a></h1>
-          <h4><a href="">Add Students</a></h4>
+          <h4><a href="">Students</a></h4>
+          <h1><a href="">Add Students</a></h1>
           <h4><a href="">Add Assignments</a></h4>
           <h4><a href="">Add Projects</a></h4>
           <h4><a href="">Add Semester</a></h4>
           
         </div>
         <div class="dashmenu1">
-          <span class="major"><a href="">Students</a></span>
-          <span style="margin-left: 10px"><a href="">Add Students</a></span>
+          <span  style="margin-left: 10px"><a href="">Students</a></span>
+          <span class="major"><a href="">Add Students</a></span>
           <span style="margin-left: 10px"><a href="">Add Assignments</a></span>
           <span style="margin-left: 10px"><a href="">Add Projects</a></span>
           <span style="margin-left: 10px"><a href="">Add Semester</a></span>
 
         </div>
         <div class="dashwork">
-          <div class="card">
-            <div class="profname"></div>
-          </div>
+            <form action="" method="post">
+              {% csrf_token %}
+              <input type="text" name="first_name" placeholder="first name">
+              <input type="text" name="last_name" placeholder="last name">
+              <input type="text" name="department" placeholder="department">
+              <input type="text" name="age">
+
+            </form>
         </div>
       </div>
     </div>

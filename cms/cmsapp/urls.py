@@ -10,7 +10,8 @@ urlpatterns = [
     path('admindashstudents',views.admindashstudents,name="admindashstudents"),
     path('addstaff',views.addstaff,name="addstaff"),
     path('loginuser',views.loginuser,name="loginuser"),
-    path("createadmin",views.createadmin,name="createadmin",)
+    # path("createadmin",views.createadmin,name="createadmin",),
+    path('staff',views.staff,name="staff")
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

@@ -128,8 +128,6 @@ def deletestaff(request,pk):
 
 
 def staff(request,pk):
-
-    students = Profile.objects.filter(staff)
     return render(request,"staff.html")
 
 # def createadmin(request):
@@ -140,3 +138,11 @@ def staff(request,pk):
 #     user.is_superuser=True
 #     user.save()
 #     return HttpResponse("helloworld")   
+
+# def staff(request,pk):
+#     user = request.user
+#     if user is not None:
+#         students = Profile.objects.filter(staff=user)
+#         return render(request,"staff.html",{"students":students})
+#     else:
+#         return redirect("loginuser")
