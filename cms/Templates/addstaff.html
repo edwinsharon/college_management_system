@@ -16,13 +16,13 @@
         </div>
         <div class="dash">
             <div class="dashmenu">
-                <h4><a href="">Teachers</a></h4>
-                <h4><a href="">Students</a></h4>
-                <h1><a href="">Add Teachers</a></h1>
+                <h4><a href="{% url 'admindash' %}">Teachers</a></h4>
+                <h4><a href="{% url  'admindashstudents' %}">Students</a></h4>
+                <h1><a href="{% url 'addstaff' %}">Add Teachers</a></h1>
             </div>
             <div class="dashmenu1">
-                <span><a href="">Teacher</a></span>
-                <span><a href="">Students</a></span>
+                <span><a href="{% url 'admindash' %}">Teacher</a></span>
+                <span><a href="{% url  'admindashstudents' %}">Students</a></span>
                 <span  class="major"><a href="">Add Teachers</a></span>
             </div>
             <div class="dashwork">

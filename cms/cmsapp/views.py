@@ -18,6 +18,7 @@ def loginuser(request):
     if request.POST:
         username=request.POST.get('username')
         password=request.POST.get('password')
+        print(username,password)
         user=authenticate(username=username,password=password)
         if user is not None:
             login(request,user)
@@ -47,10 +48,11 @@ def adminsignin(request):
     return render(request,"adminsignin.html")        
 
 def admindash(request):
-    staff_profiles = Profile.objects.filter(is_staff=True)
+    staff_profiles = Profile.objects.filter(staff=True)
     return render(request,"admindash.html",{"staff_profiles":staff_profiles})   
 def admindashstudents(request):
-    return render(request,"admindashstudents.html")
+    staff_profiles = Profile.objects.all()
+    return render(request,"admindashstudents.html",{"staff_profiles":staff_profiles})
 def addstaff(request):
     if request.POST:
         email=request.POST.get('email')
@@ -59,6 +61,7 @@ def addstaff(request):
         last_name=request.POST.get('lastname')
         age=request.POST.get('age')
         department=request.POST.get('department')
+        staff=request.user
         if not username or not email:
             messages.error(request,'all fields are required.')
       
@@ -76,7 +79,7 @@ def addstaff(request):
             recipient_list = [email]
             send_mail('Email Verification', message, email_from, recipient_list)
             user = User.objects.create_user(username=username, email=email, password=password)    
-            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user)   
+            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
             user.is_staff=True
             user.save()
             profile.save()
@@ -101,6 +104,7 @@ def addstudents(request):
         last_name=request.POST.get('lastname')
         age=request.POST.get('age')
         department=request.POST.get('department')
+        staff=request.user
         if not username or not email:
             messages.error(request,'all fields are required.')   
         elif User.objects.filter(email=email).exists():
@@ -114,7 +118,7 @@ def addstudents(request):
             recipient_list = [email]
             send_mail('Email Verification', message, email_from, recipient_list)
             user = User.objects.create_user(username=username, email=email, password=password)    
-            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user)   
+            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
             user.save()
             profile.save()
             messages.success(request, "Staff member added successfully.")
@@ -129,6 +133,11 @@ def deletestaff(request,pk):
 
 def staff(request,pk):
     return render(request,"staff.html")
+
+def logoutuser(request):
+    logout(request)
+    request.session.flush()
+    return redirect('index')
 
 # def createadmin(request):
 #     username="mainadmin"

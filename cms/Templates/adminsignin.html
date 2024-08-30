@@ -13,9 +13,9 @@
         <h1>TESLAS</h1>
       </div>
       <div class="main1">
-        <form action="{% url 'adminsignin' %}" method="post">
+        <form action="{% url 'loginuser' %}" method="post">
           {% csrf_token %}
-          <input type="text" name="email" placeholder="email" />
+          <input type="text" name="username" placeholder="username" />
           <br>
           <input type="password" name="password" placeholder="password" />
           <br>
