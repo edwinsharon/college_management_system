@@ -34,16 +34,26 @@ def loginuser(request):
             elif user.is_superuser:
                 return redirect('admindash')
             else:
-                if user.is_first_login:
-                    logout(request)
-                    user.is_first_login = False
-                    user.save()
-                    return redirect('changepassword')
-                return redirect('studentdash')
+                # if user.is_first_login:
+                #     logout(request)
+                #     user.is_first_login = False
+                #     user.save()
+                #     return redirect('changepassword')
+                return HttpResponse ("studentdash")
     return render(request,"adminsignin.html") 
 
 def adminsignin(request):
-    if request.method == 'POST':
+    user = request.user
+    if 'username' in request.session:
+        if user.is_staff:
+                return redirect('staff')
+        elif user.is_superuser:
+                return redirect('admindash')
+        else:
+            return redirect('studentdash')
+
+
+    elif request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
