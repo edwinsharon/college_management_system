@@ -20,7 +20,7 @@
       <div class="dash">
         <div class="dashmenu">
           <h1><a href="">Students</a></h1>
-          <h4><a href="">Add Students</a></h4>
+          <h4><a href="{% url 'addstudents' %}">Add Students</a></h4>
           <h4><a href="">Add Assignments</a></h4>
           <h4><a href="">Add Projects</a></h4>
           <h4><a href="">Add Semester</a></h4>
@@ -35,17 +35,7 @@
 
         </div>
         <div class="dashwork">
-          <table>
-            {% for student in profiles %}
-            <tr>
-              <td>{{ student.first_name }}</td>
-              <td>{{ student.last_name }}</td>
-              <td>{{ student.age }}</td>
-              <td>{{ student.department }}</td>
-              <td></td>
-            </tr>
-            {% endfor %}
-          </table>
+        
         </div>
       </div>
     </div>

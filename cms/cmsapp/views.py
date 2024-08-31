@@ -143,8 +143,8 @@ def addstudents(request):
             user.save()
             profile.save()
             messages.success(request, "Staff member added successfully.")
-            return redirect("admindash")
-    return render(request,"addstaff.html")
+            return redirect("staff")
+    return render(request,"addstudent.html")
 
 def deletestaff(request,pk):
     prodobj=Profile.objects.get(pk=pk)
