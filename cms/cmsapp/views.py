@@ -132,12 +132,23 @@ def deletestaff(request,pk):
 
 
 def staff(request,pk):
-    return render(request,"staff.html")
+    return render(request,"staffdash.html")
 
 def logoutuser(request):
     logout(request)
     request.session.flush()
     return redirect('index')
+
+def delete_a(request,pk):
+    prodobj=Profile.objects.get(pk=pk)
+    prodobj.delete()
+    prodobj=User.objects.get(pk=pk)
+    prodobj.delete()
+    main=request.user
+    if main.is_superuser:
+        return redirect("admindash")
+    else:
+        return redirect("staff")
 
 # def createadmin(request):
 #     username="mainadmin"

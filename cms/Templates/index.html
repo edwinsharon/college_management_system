@@ -19,7 +19,6 @@
   </head>
   <body>
     <div class="main">
-      
       <div class="submain1">
         <h1 class="title">Teslas</h1>
         <h2>Courses Offered</h2>
@@ -31,7 +30,11 @@
           <h4>Social Work</h4>
         </div>
       </div>
+      {% if user.is_authenticated %}
+      <p style="color: white;">{{ user.username }}</p>
+      {% else %}
       <a href="{% url 'loginuser' %}" class="button1">login</a>
+      {% endif %}
     </div>
     <div class="credits">
       <div class="credit1">
@@ -47,9 +50,7 @@
         <h2>1000+ Placements</h2>
       </div>
     </div>
-    <div class="imgback">
-      
-    </div>
+    <div class="imgback"></div>
     <div class="abouttesla">
       <h1>About us</h1>
       <p>
@@ -98,7 +99,6 @@
         <i class="bi bi-whatsapp"></i>
         <i class="bi bi-threads"></i>
         <i class="bi bi-instagram"></i>
-        
       </div>
     </div>
   </body>
