@@ -13,7 +13,8 @@ urlpatterns = [
     # path("createadmin",views.createadmin,name="createadmin",),
     path('staff',views.staff,name="staff"),
     path('logoutuser',views.logoutuser,name='logoutuser'),
-    path('removeuser',views.delete_a,name='removeuser'),
+    path('removeuser/<int:pk>',views.delete_a,name='removeuser'),
+    path('forgotpassword',views.forgotpassword,name="forgotpassword"),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

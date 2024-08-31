@@ -13,16 +13,14 @@
         <h1>TESLAS</h1>
       </div>
       <div class="main1">
-        <form action="{% url 'loginuser' %}" method="post">
+        <form action="{% url 'forgotpassword' %}" method="post">
           {% csrf_token %}
-          <input type="text" name="username" placeholder="username" />
-          <br>
-          <input type="password" name="password" placeholder="password" />
+          <input type="text" name="otp1" placeholder="otp" />
           <br>
           <input type="submit" value="submit" class="button12"/>
         </form>
         <div class="passd">
-          <a href="{% url 'forgotpassword' %}" >forgot password</a>
+          
         </div>
         
         {% if messages %}

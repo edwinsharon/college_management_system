@@ -24,7 +24,8 @@ def loginuser(request):
             login(request,user)
             request.session['username']=username
             if user.is_staff:
-                return redirect('staffdash')
+                if user.is_first_login:
+                    return redirect('staffdash')
             elif user.is_superuser:
                 return redirect('admindash')
             else:
@@ -142,13 +143,38 @@ def logoutuser(request):
 def delete_a(request,pk):
     prodobj=Profile.objects.get(pk=pk)
     prodobj.delete()
-    prodobj=User.objects.get(pk=pk)
-    prodobj.delete()
     main=request.user
     if main.is_superuser:
         return redirect("admindash")
     else:
         return redirect("staff")
+    
+
+def forgotpassword(request,pk):
+    if request.POST:
+        username=request.POST.get("username")
+        main=User.objects.get(username=username)
+        if main is not None:
+            otp = ''.join(random.choices('123456789', k=6))
+            request.session['otp'] = otp
+            message = f'Your otp for Teslas System is: {otp}. your username is :{username}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [main.email]
+            send_mail('Email Verification', message, email_from, recipient_list)
+            return redirect()
+            
+
+    return render(request,"forgotpassword.html")
+
+def getotp(request):
+    if request.method == 'POST':
+        otp_from_form = request.POST.get('otp1')
+        otp_from_session = request.session.get('otp')
+        if otp_from_form == otp_from_session:
+            del request.session['otp']  
+            return redirect('changepassword')  
+
+
 
 # def createadmin(request):
 #     username="mainadmin"
