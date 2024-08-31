@@ -15,6 +15,8 @@ urlpatterns = [
     path('logoutuser',views.logoutuser,name='logoutuser'),
     path('removeuser/<int:pk>',views.delete_a,name='removeuser'),
     path('forgotpassword',views.forgotpassword,name="forgotpassword"),
+    path('getopt',views.getotp,name="getopt"),
+    path('changepassword',views.changepassword,name="changepassword")
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

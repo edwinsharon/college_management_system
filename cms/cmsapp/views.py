@@ -15,20 +15,30 @@ from django.utils.crypto import get_random_string
 def index(request):
     return render(request,'index.html')
 def loginuser(request):
-    if request.POST:
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        print(username,password)
-        user=authenticate(username=username,password=password)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
             request.session['username']=username
+            print("hai")
             if user.is_staff:
-                if user.is_first_login:
-                    return redirect('staffdash')
+                # if user.is_first_login:
+                #     logout(request)
+                #     user.is_first_login = False
+                #     user.save()
+                #     return redirect('changepassword')
+
+                return redirect('staff')
             elif user.is_superuser:
                 return redirect('admindash')
             else:
+                if user.is_first_login:
+                    logout(request)
+                    user.is_first_login = False
+                    user.save()
+                    return redirect('changepassword')
                 return redirect('studentdash')
     return render(request,"adminsignin.html") 
 
@@ -41,10 +51,20 @@ def adminsignin(request):
             login(request,user)
             request.session['username']=username
             if user.is_staff:
-                return redirect('staffdash')
+                if user.is_first_login:
+                    logout(request)
+                    user.is_first_login = False
+                    user.save()
+                    return redirect('changepassword')
+                return redirect('staff')
             elif user.is_superuser:
                 return redirect('admindash')
             else:
+                if user.is_first_login:
+                    logout(request)
+                    user.is_first_login = False
+                    user.save()
+                    return redirect('changepassword')
                 return redirect('studentdash')
     return render(request,"adminsignin.html")        
 
@@ -132,8 +152,10 @@ def deletestaff(request,pk):
     return redirect("admindash")
 
 
-def staff(request,pk):
-    return render(request,"staffdash.html")
+def staff(request):
+    user = request.user
+    profiles = Profile.objects.filter(staff=user)
+    return render(request,"staffdash.html",{"profiles":profiles})
 
 def logoutuser(request):
     logout(request)
@@ -154,6 +176,7 @@ def forgotpassword(request,pk):
     if request.POST:
         username=request.POST.get("username")
         main=User.objects.get(username=username)
+        request.session['email']=main.email
         if main is not None:
             otp = ''.join(random.choices('123456789', k=6))
             request.session['otp'] = otp
@@ -161,7 +184,7 @@ def forgotpassword(request,pk):
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [main.email]
             send_mail('Email Verification', message, email_from, recipient_list)
-            return redirect()
+            return redirect("getotp")
             
 
     return render(request,"forgotpassword.html")
@@ -173,7 +196,21 @@ def getotp(request):
         if otp_from_form == otp_from_session:
             del request.session['otp']  
             return redirect('changepassword')  
+    return render(request,"getotp.html")
 
+def changepassword(request):
+    if request.method == POST:
+        password=request.POST.get('password')
+        confirmpassword=request.POST.get('confirmpassword')
+        if password==confirmpassword:
+            email=request.session.get('email')
+            user = User.objects.get(email=email)
+            user.set_password(password)
+            user.save()
+            request.session.flush()
+            return redirect('adminsignin')
+    return render(request,"changepassword")
+            
 
 
 # def createadmin(request):

@@ -35,9 +35,17 @@
 
         </div>
         <div class="dashwork">
-          <div class="card">
-            <div class="profname"></div>
-          </div>
+          <table>
+            {% for student in profiles %}
+            <tr>
+              <td>{{ student.first_name }}</td>
+              <td>{{ student.last_name }}</td>
+              <td>{{ student.age }}</td>
+              <td>{{ student.department }}</td>
+              <td></td>
+            </tr>
+            {% endfor %}
+          </table>
         </div>
       </div>
     </div>
