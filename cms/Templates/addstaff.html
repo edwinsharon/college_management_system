@@ -43,7 +43,9 @@
                     <input type="text" name="age" placeholder="age" style="border: none;">
                     <br><br>
                     <select name="department">
-                        <option value=""></option>
+                        {% for i in department %}
+                        <option value="{{ i.department }}">{{ i.department }}</option>
+                        {% endfor %}
                     </select>
                     <br><br>
                     <input type="email" name="email" placeholder="email" style="border: none;">

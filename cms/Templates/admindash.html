@@ -35,10 +35,10 @@
           >
           <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;margin-left: 50px; ">Logout</a></span>
         </div>
-        <div class="dashwork">
+        <div class="dashwork" >
           {% for i in staff_profiles %}
           <div class="card">
-            <div class="profname">
+            <div class="profname" style="margin-top: -30px;">
               <table >
                 <tr>
                   <th>FIRST NAME:</th>
@@ -57,7 +57,7 @@
                 <br/>
                 <tr>
                     <th>DEPARTMENT:</th>
-                    <th> {{i.department}}</th>
+                    <th> {{i.department.department}}</th>
                    
                 </tr>
                 <tr>
