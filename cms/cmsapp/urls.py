@@ -17,7 +17,8 @@ urlpatterns = [
     path('forgotpassword',views.forgotpassword,name="forgotpassword"),
     path('getopt',views.getotp,name="getopt"),
     path('changepassword',views.changepassword,name="changepassword"),
-    path('addstudents',views.addstudents,name='addstudents')
+    path('addstudents',views.addstudents,name='addstudents'),
+    path('add_department',views.add_department,name='add_department')
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

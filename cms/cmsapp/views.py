@@ -79,11 +79,13 @@ def adminsignin(request):
     return render(request,"adminsignin.html")        
 
 def admindash(request):
-    staff_profiles = Profile.objects.filter(staff=True)
-    return render(request,"admindash.html",{"staff_profiles":staff_profiles})   
+    staff_profiles = Faculties.objects.filter(staff=True)
+    department=College.objects.all()
+    return render(request,"admindash.html",{"staff_profiles":staff_profiles ,"department":department})   
 def admindashstudents(request):
-    staff_profiles = Profile.objects.filter(staff=False)
-    return render(request,"admindashstudents.html",{"staff_profiles":staff_profiles})
+    staff_profiles = Students.objects.filter(staff=False)
+    department=College.objects.all()
+    return render(request,"admindashstudents.html",{"staff_profiles":staff_profiles, "department":department})
 def addstaff(request):
     if request.POST:
         email=request.POST.get('email')
@@ -110,13 +112,14 @@ def addstaff(request):
             recipient_list = [email]
             send_mail('Email Verification', message, email_from, recipient_list)
             user = User.objects.create_user(username=username, email=email, password=password)    
-            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
+            profile = Faculties(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
             user.is_staff=True
             user.save()
             profile.save()
             messages.success(request, "Staff member added successfully.")
             return redirect("admindash")
-    return render(request,"addstaff.html")
+    department=College.objects.all()
+    return render(request,"addstaff.html",{"department":department})
 
 
 def handle_first_login(sender, request, user, **kwargs):
@@ -149,22 +152,23 @@ def addstudents(request):
             recipient_list = [email]
             send_mail('Email Verification', message, email_from, recipient_list)
             user = User.objects.create_user(username=username, email=email, password=password)    
-            profile = Profile(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
+            profile = Students(first_name=first_name, last_name=last_name, age=age, department=department,user=user,staff=staff)   
             user.save()
             profile.save()
             messages.success(request, "Staff member added successfully.")
             return redirect("staff")
-    return render(request,"addstudent.html")
+    
+    return render(request,"addstudent.html",)
 
 def deletestaff(request,pk):
-    prodobj=Profile.objects.get(pk=pk)
+    prodobj=Faculties.objects.get(pk=pk)
     prodobj.delete()
     return redirect("admindash")
 
 
 def staff(request):
     user = request.user
-    profiles = Profile.objects.filter(staff=user)
+    profiles = Students.objects.filter(staff=user)
     return render(request,"staffdash.html",{"profiles":profiles})
 
 def logoutuser(request):
@@ -173,7 +177,7 @@ def logoutuser(request):
     return redirect('index')
 
 def delete_a(request,pk):
-    prodobj=Profile.objects.get(pk=pk)
+    prodobj=Students.objects.get(pk=pk)
     prodobj.delete()
     main=request.user
     if main.is_superuser:
@@ -209,7 +213,7 @@ def getotp(request):
     return render(request,"getotp.html")
 
 def changepassword(request):
-    if request.method == POST:
+    if request.method == 'POST':
         password=request.POST.get('password')
         confirmpassword=request.POST.get('confirmpassword')
         if password==confirmpassword:
@@ -220,6 +224,16 @@ def changepassword(request):
             request.session.flush()
             return redirect('adminsignin')
     return render(request,"changepassword")
+
+
+def add_department(request):
+    if request.method == 'POST':
+        department=request.POST.get('department')
+        dep=College(department=department)
+        dep.save()
+        return redirect("add_department")
+    return render(request,"")
+
             
 
 

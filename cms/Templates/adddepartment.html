@@ -21,56 +21,22 @@
       </div>
       <div class="dash">
         <div class="dashmenu">
-          <h1><a href="{% url 'admindash' %}">Teachers</a></h1>
+          <h4><a href="{% url 'admindash' %}">Teachers</a></h4>
           <h4><a href="{% url  'admindashstudents' %}">Students</a></h4>
           <h4><a href="{% url 'addstaff' %}">Add Teachers</a></h4>
-          <h4><a href="{% url 'add_department' %}">Add Department</a></h4>
+          <h1><a href="{% url 'add_department' %}">Add Department</a></h1>
           <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
         </div>
         <div class="dashmenu1">
-          <span class="major"><a href="{% url 'admindash' %}">Teacher</a></span>
+          <span ><a href="{% url 'admindash' %}">Teacher</a></span>
           <span><a href="{% url  'admindashstudents' %}">Students</a></span>
-          <span><a href="{% url  'add_department' %}">Add Department</a></span>
+          <span class="major" ><a href="{% url  'add_department' %}">Add Department</a></span>
           <span style="margin-left: 10px"><a href="{% url 'addstaff' %}">Add Teachers</a></span
           >
           <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;margin-left: 50px; ">Logout</a></span>
         </div>
         <div class="dashwork">
-          {% for i in staff_profiles %}
-          <div class="card">
-            <div class="profname">
-              <table >
-                <tr>
-                  <th>FIRST NAME:</th>
-                  <th>{{ i.first_name }}</th>
-                </tr>
-                <br />
-                <tr>
-                  <th>LAST NAME:</th>
-                  <th>{{ i.last_name }}</th>
-                </tr>
-                <br />
-                <tr>
-                  <th>AGE:</th>
-                  <th>{{ i.age }}</th>
-                </tr>
-                <br/>
-                <tr>
-                    <th>DEPARTMENT:</th>
-                    <th> {{i.department}}</th>
-                   
-                </tr>
-                <tr>
-                   <td><a href="{% url 'removeuser' i.pk %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;margin-left: 50px;">Delete</a></td> 
-                </tr>
-                
-                <br/>
-              </table>
-            </div>
-          </div>
-
-          <div class="don"></div>
-          {% endfor %}
+          
         </div>
       </div>
     </div>

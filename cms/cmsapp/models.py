@@ -7,44 +7,33 @@ class Verify(models.Model):
     otp = models.IntegerField()
     otp1 = models.IntegerField()
 
+class College(models.Model):
+    department = models.CharField(max_length=50)
+    semester = models.CharField(max_length=100)
 
-class Profile(models.Model):
+class Students(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    age=models.IntegerField()
-    department=models.CharField(max_length=50)
+    age = models.IntegerField()
+    department = models.ForeignKey(College, on_delete=models.CASCADE)
     is_first_login = models.BooleanField(default=True) 
-    staff= models.ForeignKey(User, on_delete=models.CASCADE,related_name='profile_staff')  
-
-
-class Semester(models.Model):
-    name = models.CharField(max_length=50)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    staff= models.ForeignKey(User, on_delete=models.CASCADE, related_name='semester_staff')
-    def __str__(self):
-        return self.name
-
-
-class Assignment(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    due_date = models.DateField()
-    is_submitted = models.BooleanField(default=False) 
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.title
+    staff = models.ForeignKey(User, on_delete=models.CASCADE, related_name='student_staff')  # Updated related_name
 
 class Exam(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField()
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    mark=models.IntegerField()
+    semester = models.ForeignKey(College, on_delete=models.CASCADE)
+    mark = models.IntegerField()
+    
     def __str__(self):
         return self.title
 
-# class CustomUser(AbstractUser):
-#     is_first_login = models.BooleanField(default=True)   
-
-    
+class Faculties(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    age = models.IntegerField()
+    department = models.ForeignKey(College, on_delete=models.CASCADE)
+    is_first_login = models.BooleanField(default=True) 
+    staff = models.ForeignKey(User, on_delete=models.CASCADE, related_name='faculty_staff')  # Updated related_name
