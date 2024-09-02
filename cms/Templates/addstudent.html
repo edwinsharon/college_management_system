@@ -37,21 +37,25 @@
 
         </div>
         <div class="dashwork">
-          <form action="{% url 'addstudents' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
+          <form action="{% url 'addstudents' %}" method="post" style=" width:300px; padding:30px;margin-left:400px; padding-left:30px; margin-top: -500px; ">
             {% csrf_token %}
-            <input type="text" name="firstname" placeholder="firstname" height="30px" style="border: none;">
+            <input type="text" name="firstname" placeholder="firstname" height="30px" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
             <br>
             <br>
-            <input type="text" name="lastname" placeholder="lastname" style="border: none;">
+            <input type="text" name="lastname" placeholder="lastname" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
             <br>
             <br>
-            <input type="text" name="username" placeholder="username" style="border: none;">
+            <input type="text" name="username" placeholder="username" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
             <br><br>
-            <input type="text" name="age" placeholder="age" style="border: none;">
+            <input type="text" name="age" placeholder="age"style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
             <br><br>
-            <input type="text" name="department" placeholder="department" style="border: none;">
+            <select name="department" style="background-color: rgb(99, 99, 240); border:none; height: 30px; width: 200px; border-radius: 5px;">
+              {% for i in department %}
+              <option value="{{ i.department }}">{{ i.department }}</option>
+              {% endfor %}
+          </select>
             <br><br>
-            <input type="email" name="email" placeholder="email" style="border: none;">
+            <input type="email" name="email" placeholder="email" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
             <br>
             <br>
             <input type="submit" value="submit" style=" height: 30px;

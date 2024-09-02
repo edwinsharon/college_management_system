@@ -147,6 +147,7 @@ def addstudents(request):
         elif User.objects.filter(username=username).exists():
             messages.error(request,"username already exist")
         else:
+            department = College.objects.get(department=department)
             password = get_random_string(length=12)
             message = f'Your Password for Teslas System is: {password}. your username is :{username}'
             email_from = settings.EMAIL_HOST_USER
@@ -158,8 +159,8 @@ def addstudents(request):
             profile.save()
             messages.success(request, "Staff member added successfully.")
             return redirect("staff")
-    
-    return render(request,"addstudent.html",)
+    department=College.objects.all()
+    return render(request,"addstudent.html",{"department":department})
 
 def deletestaff(request,pk):
     prodobj=Faculties.objects.get(pk=pk)
@@ -244,14 +245,14 @@ def delete_department(request,pk):
             
 
 
-def createadmin(request):
-    username="teslaadmin"
-    email="edwinmadapallil@gmail.com"
-    password="tesla@2002"
-    user = User.objects.create_user(username=username, email=email, password=password) 
-    user.is_superuser=True
-    user.save()
-    return HttpResponse("helloworld")   
+# def createadmin(request):
+#     username="teslaadmin"
+#     email="edwinmadapallil@gmail.com"
+#     password="tesla@2002"
+#     user = User.objects.create_user(username=username, email=email, password=password) 
+#     user.is_superuser=True
+#     user.save()
+#     return HttpResponse("helloworld")   
 
 # def staff(request,pk):
 #     user = request.user

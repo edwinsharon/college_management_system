@@ -24,8 +24,20 @@
           <h4><a href="">Add Exam</a></h4>
           <h4><a href="">Add Projects</a></h4>
           <h4><a href="">Add Semester</a></h4>
-          <h4><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;margin-left: 50px; ">Logout</a></h4>
-          
+          <h4>
+            <a
+              href="{% url 'logoutuser' %}"
+              style="
+                background-color: red;
+                border-radius: 5px;
+                border: 1px red solid;
+                text-decoration: none;
+                color: white;
+                margin-left: 50px;
+              "
+              >Logout</a
+            >
+          </h4>
         </div>
         <div class="dashmenu1">
           <span class="major"><a href="">Students</a></span>
@@ -33,11 +45,39 @@
           <span style="margin-left: 10px"><a href="">Add Exam</a></span>
           <span style="margin-left: 10px"><a href="">Add Projects</a></span>
           <span style="margin-left: 10px"><a href="">Add Semester</a></span>
-          <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;margin-left: 50px; ">Logout</a></span>
-
+          <span
+            ><a
+              href="{% url 'logoutuser' %}"
+              style="
+                background-color: red;
+                border-radius: 5px;
+                border: 1px red solid;
+                text-decoration: none;
+                color: white;
+                margin-left: 50px;
+              "
+              >Logout</a
+            ></span
+          >
         </div>
         <div class="dashwork">
-        
+          <table cellpadding="60" style="margin-top: -400px;">
+            <tr style="border-bottom: 5px solid black;" >
+              <th>FIRST NAME</th>
+              <th>LAST NAME</th>
+              <th>AGE</th>
+              <th>DEPARTMENT</th>
+            </tr>
+            <tr style="border-bottom: 5px solid black;">
+              {% for i in profiles %}
+              <td>{{i.first_name}}</td>
+              <td>{{i.last_name}}</td>
+              <td>{{i.age}}</td>
+              <td>{{i.department.department}}</td>
+              {% endfor %}
+            </tr>
+
+          </table>
         </div>
       </div>
     </div>
