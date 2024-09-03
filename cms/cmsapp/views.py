@@ -188,7 +188,7 @@ def delete_a(request,pk):
         return redirect("staff")
     
 
-def forgotpassword(request,pk):
+def forgotpassword(request):
     if request.POST:
         username=request.POST.get("username")
         main=User.objects.get(username=username)
@@ -225,7 +225,7 @@ def changepassword(request):
             user.save()
             request.session.flush()
             return redirect('adminsignin')
-    return render(request,"changepassword")
+    return render(request,"changepassword.html")
 
 
 def add_department(request):

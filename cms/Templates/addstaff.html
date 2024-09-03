@@ -30,19 +30,19 @@
                 <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
             </div>
             <div class="dashwork">
-                <form action="{% url 'addstaff' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
+                <form action="{% url 'addstaff' %}" method="post" style="margin-top: -400px;">
                     {% csrf_token %}
-                    <input type="text" name="firstname" placeholder="firstname" height="30px" style="border: none;">
+                    <input type="text" name="firstname" placeholder="firstname" height="30px" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;"">
                     <br>
                     <br>
-                    <input type="text" name="lastname" placeholder="lastname" style="border: none;">
+                    <input type="text" name="lastname" placeholder="lastname" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
                     <br>
                     <br>
-                    <input type="text" name="username" placeholder="username" style="border: none;">
+                    <input type="text" name="username" placeholder="username" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
                     <br><br>
-                    <input type="text" name="age" placeholder="age" style="border: none;">
+                    <input type="text" name="age" placeholder="age" style="width: 400px;height: 50px ; border: rgb(99, 99, 240) solid 2px; border-radius: 5px;">
                     <br><br>
-                    <select name="department">
+                    <select name="department" style="background-color: rgb(99, 99, 240); border:none; height: 30px; width: 200px; border-radius: 5px;">
                         {% for i in department %}
                         <option value="{{ i.department }}">{{ i.department }}</option>
                         {% endfor %}
@@ -54,7 +54,7 @@
                     <input type="submit" value="submit" style=" height: 30px;
     width: 100px;
     background-color: rgb(9, 72, 155);
-    margin-left: 30%; margin-left:0px; border:none; color:white;">
+    margin-left: 30%; margin-left:0px; border-radius: 5px; color:white; border: none">
                 </form>
 
             </div>
