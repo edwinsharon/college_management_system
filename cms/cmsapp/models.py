@@ -9,8 +9,10 @@ class Verify(models.Model):
 
 class College(models.Model):
     department = models.CharField(max_length=50)
-    semester = models.CharField(max_length=100)
 
+class Semester(models.Model):
+    semester=models.CharField(max_length=100)    
+    
 class Students(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
@@ -23,7 +25,7 @@ class Students(models.Model):
 class Exam(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField()
-    semester = models.ForeignKey(College, on_delete=models.CASCADE)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     mark = models.IntegerField()
     
     def __str__(self):

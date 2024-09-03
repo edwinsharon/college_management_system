@@ -14,9 +14,7 @@
 
   <body>
     <div class="main">
-
       <div class="mainnav">
-      
         <h1>TESLAS ADMIN's DASH</h1>
       </div>
       <div class="dash">
@@ -25,38 +23,113 @@
           <h4><a href="{% url  'admindashstudents' %}">Students</a></h4>
           <h4><a href="{% url 'addstaff' %}">Add Teachers</a></h4>
           <h1><a href="{% url 'add_department' %}">Add Department</a></h1>
-          <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;">Logout</a></span>
+          <span
+            ><a
+              href="{% url 'logoutuser' %}"
+              style="
+                background-color: red;
+                border-radius: 5px;
+                border: 1px red solid;
+                text-decoration: none;
+                color: white;
+              "
+              >Logout</a
+            ></span
+          >
         </div>
         <div class="dashmenu1">
-          <span ><a href="{% url 'admindash' %}">Teacher</a></span>
+          <span><a href="{% url 'admindash' %}">Teacher</a></span>
           <span><a href="{% url  'admindashstudents' %}">Students</a></span>
-          <span class="major" ><a href="{% url  'add_department' %}">Add Department</a></span>
-          <span style="margin-left: 10px"><a href="{% url 'addstaff' %}">Add Teachers</a></span
+          <span class="major"
+            ><a href="{% url  'add_department' %}">Add Department</a></span
           >
-          <span><a href="{% url 'logoutuser' %}" style="background-color: red; border-radius: 5px; border:1px red solid; text-decoration: none; color: white;  " align="center">Logout</a></span>
+          <span style="margin-left: 10px"
+            ><a href="{% url 'addstaff' %}">Add Teachers</a></span
+          >
+          <span
+            ><a
+              href="{% url 'logoutuser' %}"
+              style="
+                background-color: red;
+                border-radius: 5px;
+                border: 1px red solid;
+                text-decoration: none;
+                color: white;
+              "
+              align="center"
+              >Logout</a
+            ></span
+          >
         </div>
         <div class="dashwork">
-          <form action="{% url 'add_department' %}" method="post" style=" width:300px; padding:30px;margin-left:800px; padding-left:30px; margin-top: -600px;margin-left: -20px;">
+         
+          <form
+            action="{% url 'add_department' %}"
+            method="post"
+            style="
+              width: 300px;
+              padding: 30px;
+              margin-left: 600px;
+              padding-left: 30px;
+              margin-top: -600px;
+              margin-left: -20px;
+            "
+          >
             {% csrf_token %}
-             <input type="text" name="department" placeholder="Department" style="border: 2px rgb(88, 88, 235) solid; width: 400px;height: 50px; border-radius: 5px;">
-             <input type="submit" value="submit" style="margin-left: 150px; margin-top: 20px; height: 50px; width: 100px; background-color:  rgb(88, 88, 235); border: none; border-radius: 5px;">
-        </form>
-        <div class="dep" style="margin-left: -530px; margin-top: -200px;">
-          <h1 style="color: rgb(88, 88, 235); " >DEPARTMENTS</h1>
-          {% for i in department %}
-            <div class="department-item" style="background-color: rgb(88, 88, 235); color: white; margin-top: 4px; width: 250px;height: 50px; border-radius: 5px; text-align: center;">
+            <input
+              type="text"
+              name="department"
+              placeholder="Department"
+              style="
+                border: 2px rgb(88, 88, 235) solid;
+                width: 400px;
+                height: 50px;
+                border-radius: 5px;
+              "
+            />
+            <input
+              type="submit"
+              value="submit"
+              style="
+                margin-left: 150px;
+                margin-top: 20px;
+                height: 50px;
+                width: 100px;
+                background-color: rgb(88, 88, 235);
+                border: none;
+                border-radius: 5px;
+              "
+            />
+          </form>
+          <div class="dep" style="margin-left: -550px; margin-top: -200px">
+            <h1 style="color: rgb(88, 88, 235)">DEPARTMENTS</h1>
+            {% for i in department %}
+            <div
+              class="department-item"
+              style="
+                background-color: rgb(88, 88, 235);
+                color: white;
+                margin-top: 4px;
+                width: 250px;
+                height: 50px;
+                border-radius: 5px;
+                text-align: center;
+              "
+            >
               {{ i.department }}
-              <a href="{% url 'delete_department' i.pk %}" 
-                 aria-label="Delete {{ i.department }}" 
-                 class="delete-link" >
+              <a
+                href="{% url 'delete_department' i.pk %}"
+                aria-label="Delete {{ i.department }}"
+                class="delete-link"
+              >
                 <i class="bi bi-trash-fill"></i>
               </a>
             </div>
-          {% endfor %}
-        </div>
-      
-       
-
+            {% endfor %}
+          </div>
+          
+          
+          
         </div>
       </div>
     </div>

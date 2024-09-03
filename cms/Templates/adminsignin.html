@@ -24,14 +24,7 @@
         <div class="passd">
           <a href="{% url 'forgotpassword' %}"  style="font-size: 20px; color: white;">forgotpassword</a>
         </div>
-        
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+  
       </div>
     </div>
   </body>

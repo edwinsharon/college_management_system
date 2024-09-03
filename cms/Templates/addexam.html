@@ -37,16 +37,28 @@
         <div class="dashwork">
           <form action="{% url 'addstudents' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
             {% csrf_token %}
-            <input type="text" name="title" placeholder="firstname" height="30px" style="border: none;">
+            <input type="text" name="title" placeholder="Exam Title" height="30px"  style="
+            border: 2px rgb(88, 88, 235) solid;
+            width: 400px;
+            height: 50px;
+            border-radius: 5px;
+          ">
             <br>
             <br>
-            <input type="text" name="date" placeholder="lastname" style="border: none;">
+            <input type="date" name="date" placeholder="date"  style="
+            border: 2px rgb(88, 88, 235) solid;
+            width: 400px;
+            height: 50px;
+            border-radius: 5px;
+          ">
             <br>
             <br>
-            <select name="semester" id="">
-              <option value=""></option>
-            </select>
-            <input type="text" name="mark" placeholder="age" style="border: none;">
+            <input type="text" name="mark" placeholder="age"  style="
+            border: 2px rgb(88, 88, 235) solid;
+            width: 400px;
+            height: 50px;
+            border-radius: 5px;
+          ">
             <br><br>
             <input type="submit" value="submit" style=" height: 30px;
 width: 100px;

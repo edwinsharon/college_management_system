@@ -241,18 +241,20 @@ def delete_department(request,pk):
     prodobj=College.objects.get(pk=pk)
     prodobj.delete()
     return redirect("add_department")
-    
-            
 
 
-# def createadmin(request):
-#     username="teslaadmin"
-#     email="edwinmadapallil@gmail.com"
-#     password="tesla@2002"
-#     user = User.objects.create_user(username=username, email=email, password=password) 
-#     user.is_superuser=True
-#     user.save()
-#     return HttpResponse("helloworld")   
+# def add_exam(request):
+#     if request.method == 'POST':
+
+
+def createadmin(request):
+    username="teslaadmin"
+    email="edwinmadapallil@gmail.com"
+    password="tesla@2002"
+    user = User.objects.create_user(username=username, email=email, password=password) 
+    user.is_superuser=True
+    user.save()
+    return HttpResponse("helloworld")   
 
 # def staff(request,pk):
 #     user = request.user

@@ -61,22 +61,21 @@
           >
         </div>
         <div class="dashwork">
-          <table cellpadding="60" style="margin-top: -400px;">
-            <tr style="border-bottom: 5px solid black;" >
+          <table cellpadding="60" style="margin-top: -400px" border="2" style="border: 5px solid black">
+            <tr style="border-bottom: 5px solid black">
               <th>FIRST NAME</th>
               <th>LAST NAME</th>
               <th>AGE</th>
               <th>DEPARTMENT</th>
             </tr>
-            <tr style="border-bottom: 5px solid black;">
-              {% for i in profiles %}
+            {% for i in profiles %}
+            <tr>
               <td>{{i.first_name}}</td>
               <td>{{i.last_name}}</td>
               <td>{{i.age}}</td>
               <td>{{i.department.department}}</td>
-              {% endfor %}
             </tr>
-
+            {% endfor %}
           </table>
         </div>
       </div>
