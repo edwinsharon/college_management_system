@@ -243,18 +243,36 @@ def delete_department(request,pk):
     return redirect("add_department")
 
 
-# def add_exam(request):
-#     if request.method == 'POST':
+def add_exam(request):
+    if request.method == 'POST':
+        title=request.POST.get("title")
+        date=request.POST.get("date")
+        semester=request.POST.get("semester")
+        mark=request.POST.get("mark")
+        dep=Exam(title=title,date=date,semester=semester,mark=mark)
+        dep.save()
+        return redirect("add_exam")
+    return render(request,"addexam.html")
 
 
-def createadmin(request):
-    username="teslaadmin"
-    email="edwinmadapallil@gmail.com"
-    password="tesla@2002"
-    user = User.objects.create_user(username=username, email=email, password=password) 
-    user.is_superuser=True
-    user.save()
-    return HttpResponse("helloworld")   
+def add_semester(request):
+    if request.method == 'POST':
+        semester=request.POST.get('semester')
+        dep=Semester(semester=semester)
+        dep.save()
+        return redirect("add_semester")
+    semester=Semester.objects.all()
+    return render(request,"addsemester.html",{"semester":semester})
+
+
+# def createadmin(request):
+#     username="teslaadmin"
+#     email="edwinmadapallil@gmail.com"
+#     password="tesla@2002"
+#     user = User.objects.create_user(username=username, email=email, password=password) 
+#     user.is_superuser=True
+#     user.save()
+#     return HttpResponse("helloworld")   
 
 # def staff(request,pk):
 #     user = request.user

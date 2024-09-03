@@ -19,19 +19,19 @@
       </div>
       <div class="dash">
         <div class="dashmenu">
-          <h4><a href="">Students</a></h4>
-          <h4><a href="">Add Students</a></h4>
-          <h4><a href="">Add Assignments</a></h4>
+          <h4><a href="{% url 'staff' %}">Students</a></h4>
+          <h4><a href="{% url 'addstudents' %}">Add Students</a></h4>
+          <h4><a href="{% url 'add_exam' %}">Add Exam</a></h4>
           <h4><a href="">Add Projects</a></h4>
-          <h1><a href="">Add Semester</a></h1>
+          <h1><a href="{% url 'add_semester' %}">Add Semester</a></h1>
           
         </div>
         <div class="dashmenu1">
-          <span  style="margin-left: 10px" ><a href="">Students</a></span>
-          <span style="margin-left: 10px" ><a href="">Add Students</a></span>
-          <span style="margin-left: 10px"><a href="">Add Assignments</a></span>
+          <span  style="margin-left: 10px" ><a href="{% url 'staff' %}">Students</a></span>
+          <span style="margin-left: 10px" ><a href="{% url 'addstudents' %}">Add Students</a></span>
+          <span style="margin-left: 10px"><a href="{% url 'add_exam' %}">Add Exam</a></span>
           <span style="margin-left: 10px"><a href="">Add Projects</a></span>
-          <span class="major"><a href="">Add Semester</a></span>
+          <span class="major"><a href="{% url 'add_semester' %}">Add Semester</a></span>
 
         </div>
         <div class="dashwork">
@@ -50,7 +50,7 @@
           {% csrf_token %}
           <input
             type="text"
-            name="department"
+            name="semester"
             placeholder="Semester"
             style="
               border: 2px rgb(88, 88, 235) solid;
@@ -74,8 +74,8 @@
           />
         </form>
         <div class="dep" style="margin-left: -550px; margin-top: -200px">
-          <h1 style="color: rgb(88, 88, 235)">DEPARTMENTS</h1>
-          {% for i in department %}
+          <h1 style="color: rgb(88, 88, 235)">SEMESTER</h1>
+          {% for i in semester %}
           <div
             class="department-item"
             style="

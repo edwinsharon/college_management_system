@@ -15,27 +15,27 @@
   <body>
     <div class="main">
       <div class="mainnav">
-        <h1>TESLAS ADMIN's DASH</h1>
+        <h1>TESLAS  STAFF's DASH</h1>
       </div>
       <div class="dash">
         <div class="dashmenu">
-          <h4><a href="">Students</a></h4>
-          <h4><a href="">Add Students</a></h4>
-          <h1><a href="">Add Assignments</a></h1>
+          <h4><a href="{% url 'staff' %}">Students</a></h4>
+          <h4><a href="{% url 'addstudents' %}">Add Students</a></h4>
+          <h1><a href="{% url 'add_exam' %}">Add Exam</a></h1>
           <h4><a href="">Add Projects</a></h4>
-          <h4><a href="">Add Semester</a></h4>
+          <h4><a href="{% url 'add_semester' %}">Add Semester</a></h4>
           
         </div>
         <div class="dashmenu1">
-          <span  style="margin-left: 10px" ><a href="">Students</a></span>
-          <span style="margin-left: 10px" ><a href="">Add Students</a></span>
-          <span class="major"><a href="">Add Assignments</a></span>
+          <span  style="margin-left: 10px" ><a href="{% url 'staff' %}">Students</a></span>
+          <span style="margin-left: 10px" ><a href="{% url 'addstudents' %}">Add Students</a></span>
+          <span class="major"><a href="{% url 'add_exam' %}">Add Exam</a></span>
           <span style="margin-left: 10px"><a href="">Add Projects</a></span>
-          <span style="margin-left: 10px"><a href="">Add Semester</a></span>
+          <span style="margin-left: 10px"><a href="{% url 'add_semester' %}">Add Semester</a></span>
 
         </div>
         <div class="dashwork">
-          <form action="{% url 'addstudents' %}" method="post" style="background-color: rgb(24, 119, 242); width:300px; padding:30px;margin-left:800px; padding-left:30px; ">
+          <form action="{% url 'add_exam' %}" method="post" style="width:300px; padding:30px;margin-left:500px; padding-left:30px; margin-top: -600px;">
             {% csrf_token %}
             <input type="text" name="title" placeholder="Exam Title" height="30px"  style="
             border: 2px rgb(88, 88, 235) solid;
@@ -53,7 +53,7 @@
           ">
             <br>
             <br>
-            <input type="text" name="mark" placeholder="age"  style="
+            <input type="text" name="mark" placeholder="mark"  style="
             border: 2px rgb(88, 88, 235) solid;
             width: 400px;
             height: 50px;

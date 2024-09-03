@@ -19,9 +19,9 @@
       </div>
       <div class="dash">
         <div class="dashmenu">
-          <h1><a href="">Students</a></h1>
+          <h1><a href="{% url 'staff' %}">Students</a></h1>
           <h4><a href="{% url 'addstudents' %}">Add Students</a></h4>
-          <h4><a href="">Add Exam</a></h4>
+          <h4><a href="{% url 'add_exam' }">Add Exam</a></h4>
           <h4><a href="">Add Projects</a></h4>
           <h4><a href="">Add Semester</a></h4>
           <h4>
@@ -40,11 +40,11 @@
           </h4>
         </div>
         <div class="dashmenu1">
-          <span class="major"><a href="">Students</a></span>
-          <span style="margin-left: 10px"><a href="">Add Students</a></span>
-          <span style="margin-left: 10px"><a href="">Add Exam</a></span>
+          <span class="major"><a href="{% url 'staff' %}">Students</a></span>
+          <span style="margin-left: 10px"><a href="{% url 'addstudents' %}">Add Students</a></span>
+          <span style="margin-left: 10px"><a href="{% url 'add_exam' %}">Add Exam</a></span>
           <span style="margin-left: 10px"><a href="">Add Projects</a></span>
-          <span style="margin-left: 10px"><a href="">Add Semester</a></span>
+          <span style="margin-left: 10px"><a href="{% url 'add_exam' %}">Add Semester</a></span>
           <span
             ><a
               href="{% url 'logoutuser' %}"
